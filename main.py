@@ -50,10 +50,24 @@ class Zoo:
     def add_animal(self, animal):
         self.animal_list.append(animal)
         print(f"Животное {animal.name} добавлено")
+        with open("animal.txt", "a", encoding="utf-8") as file:
+            file.write(self.zoo_name)
+            file.write("\n")
+            file.write(animal.name)
+            file.write("\n")
+            file.write(animal.age)
+            file.write("\n")
+        file.close()
 
     def add_sotrudnik(self, sotrudnik):
         self.sotrudniki_list.append(sotrudnik)
         print(f"Сотрудник {sotrudnik.name} добавлен")
+        with open("sotrudniki.txt", "a", encoding="utf-8") as file:
+            file.write(self.zoo_name)
+            file.write("\n")
+            file.write(sotrudnik.name)
+            file.write("\n")
+        file.close()
 
 
 def sound (animals):
@@ -62,13 +76,13 @@ def sound (animals):
 
 
 zoopark = Zoo("Moscow_Zoo")
-mamal1 = Mammal("Moo", 5)
+mamal1 = Mammal("Moo", "5")
 zoopark.add_animal(mamal1)
 
-reptile1 = Reptile("Croco", 4)
+reptile1 = Reptile("Croco", "4")
 zoopark.add_animal(reptile1)
 
-bird1 = Bird("Petya", 2)
+bird1 = Bird("Petya", "2")
 zoopark.add_animal(bird1)
 
 zoo_keeper = ZooKeeper("Vasya")
